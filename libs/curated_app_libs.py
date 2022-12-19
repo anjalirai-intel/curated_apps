@@ -62,7 +62,7 @@ def generate_curated_image(test_config_dict):
     end_test = test_config_dict.get('expected_output_console')
     os.chdir(CURATED_APPS_PATH)
     try:
-        process = subprocess.Popen(curation_cmd, shell=True, stdout=subprocess.PIPE, encoding="utf-8")
+        process = subprocess.Popen(curation_cmd, shell=True, stdout=subprocess.PIPE, stdin=subprocess.PIPE, encoding="utf-8", env={"TERM":"xterm-256color"})
         print("Process started ", curation_cmd)
         os.chdir(FRAMEWORK_PATH)
         screen_name = "home_page"
